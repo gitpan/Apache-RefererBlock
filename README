@@ -1,0 +1,23 @@
+NAME
+
+Apache::RefererBlock - block request based upon referer header
+
+SYNOPSIS
+
+In the configuration of your Apache add something like
+	PerlModule Apache::RefererBlock
+	PerlFixupHandler Apache::RefererBlock
+	PerlSetVar AllowedReferers "http://www.mydomain.com http://mydomain.com"
+	PerlSetVar CheckMimeTypes "image/gif image/jpeg"
+
+DESCRIPTION
+
+Apache::RefererBlock will examine each request. If the Mime type of the requested file
+is one of those listed in CheckMimeTypes, it will check the referer header. If the referer
+doesn't start with one of the strings listed in AllowedReferers, a "Forbidden" error will
+be returned.
+
+AUTHOR
+
+Eric Cholet, cholet@logilune.com
+
