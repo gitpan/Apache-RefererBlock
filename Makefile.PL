@@ -29,9 +29,16 @@ my @directives= (
 command_table(\@directives);
 
 WriteMakefile(
-    'NAME'	=> 'Apache::RefererBlock',
-    'VERSION_FROM' => 'RefererBlock.pm', # finds $VERSION
-    'LIBS'	=> [''],   # e.g., '-lm' 
-    'DEFINE'	=> '',     # e.g., '-DHAVE_SOMETHING' 
-    'INC'       => Apache::src->new->inc,
+    NAME         => 'Apache::RefererBlock',
+    AUTHOR       => 'Eric Cholet <cholet@logilune.com>',
+    ABSTRACT     => 'block request based upon referer header',
+    VERSION_FROM => 'RefererBlock.pm',
+    INC          => Apache::src->new->inc,
+    PREREQ_PM    => { Test::More       => 0,
+                      Test::MockObject => 0,
+                    },
+    clean        => { FILES => 'RefererBlock.xs' },
+    dist         => { COMPRESS => 'gzip -9f',
+                      SUFFIX   => 'gz',
+                    },
 );

@@ -3,4 +3,5 @@ MANIFEST
 Changes
 Makefile.PL
 RefererBlock.pm
-test.pl
+t/basic.t
+META.yml                                Module meta-data (added by MakeMaker)

@@ -5,7 +5,7 @@ use DynaLoader ();
 use Apache::Constants qw(REDIRECT OK FORBIDDEN);
 use vars qw($VERSION);
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 if ($ENV{MOD_PERL}) {
 	no strict;
@@ -53,12 +53,12 @@ sub handler {
 
 	# check referer against allowed ones
 	foreach my $referer (@referers) {
-		return OK if ($hr =~ /^$referer/i);
+		return OK if $hr =~ /^\Q$referer\E/i;
 	}
 
 	# redirect or reject non-authorized referers
 	foreach my $referer (keys %redir) {
-		if ($hr =~ /^$referer/i) {
+		if ($hr =~ /^\Q$referer\E/i) {
 			$r->headers_out->set(Location => "$redir{$referer}");
 			$r->log_reason("referer redirected: $hr") if $debug;
 			return REDIRECT;

@@ -1,0 +1,11 @@
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Apache-RefererBlock
+version:      0.04
+version_from: RefererBlock.pm
+installdirs:  site
+requires:
+    Test::MockObject:              0
+    Test::More:                    0
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.12

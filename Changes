@@ -1,5 +1,12 @@
 Revision history for Perl extension Apache::RefererBlock.
 
+0.04  Mar 12 2005
+
+    - use Test::More and Test::MockObject to test features
+    - quotemeta when matching referers
+    - add author and abstract to Makefile.PL
+    - add META.yml
+
 0.03  Dec 29 1998
 
 	- directive handlers replace PerlSetVar.
