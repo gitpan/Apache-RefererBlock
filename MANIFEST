@@ -1,5 +1,6 @@
 README
-Changes
 MANIFEST
+Changes
 Makefile.PL
 RefererBlock.pm
+test.pl

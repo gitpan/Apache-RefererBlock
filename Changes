@@ -1,5 +1,15 @@
 Revision history for Perl extension Apache::RefererBlock.
 
-0.01  November 1998
-	original version;
+0.03  Dec 29 1998
+
+	- directive handlers replace PerlSetVar.
+	- reviewed documentation
+
+0.02  Nov 27 1998 (unreleased)
+
+	- added optional redirection for specific referrers
+
+0.01  Nov 18 1998
+
+	- original version; created by h2xs 1.18
 

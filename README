@@ -1,23 +1,52 @@
 NAME
 
-Apache::RefererBlock - block request based upon referer header
+Apache::RefererBlock - block request based upon "Referer" header
 
 SYNOPSIS
 
-In the configuration of your Apache add something like
+In your Apache configuration file, add something like
+
 	PerlModule Apache::RefererBlock
 	PerlFixupHandler Apache::RefererBlock
-	PerlSetVar AllowedReferers "http://www.mydomain.com http://mydomain.com"
-	PerlSetVar CheckMimeTypes "image/gif image/jpeg"
+	RefBlockMimeTypes image/gif image/jpeg
+	RefBlockAllowed http://www.mydomaine.com http://mydomaine.com
+	RefBlockRedirect http://www.badguyse.com http://www.badguyse.com/images/bigpicture.gif
+	RefBlockRedirect http://www.realbadguyse.com http://www.xxx.xxx/samples/tts.jpg
+	RefBlockDebug On
+
+All directives are optional.
 
 DESCRIPTION
 
-Apache::RefererBlock will examine each request. If the Mime type of the requested file
-is one of those listed in CheckMimeTypes, it will check the referer header. If the referer
-doesn't start with one of the strings listed in AllowedReferers, a "Forbidden" error will
-be returned.
+Apache::RefererBlock will examine each request. If the MIME type of the requested file
+is one of those listed in RefBlockMimeTypes, it will check the request's "Referer" header.
+If the referrer starts with one of the strings listed in RefBlockAllowed, access is granted.
+Otherwise, if there's a RefBlockRedirect directive for the referrer, a redirect is issued.
+Otherwise, a "Forbidden" (403) error is returned.
+
+INSTALLATION
+
+perl Makefile.PL
+make
+make install
+
+REQUIREMENTS
+
+mod_perl 1.16_01 or greater
+apache 1.3.3 or greater
+
+AVAILABILITY
+
+The latest version can be fetched from <http://www.logilune.com/eric/RefererBlock.html>.
 
 AUTHOR
 
-Eric Cholet, cholet@logilune.com
+Eric CHOLET <cholet@logilune.com>
 
+
+COPYRIGHT
+
+Copyright (c) 1998 Eric Cholet.
+
+This library is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
